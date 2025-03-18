@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>素数判定</title>
+    <script>
+        // 素数かどうかを判定する関数
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false; // 割り切れる場合は素数ではない
+            }
+            return true;
+        }
+
+        // ボタンがクリックされたときに素数を判定して表示する関数
+        function checkPrime() {
+            let number = parseInt(document.getElementById("number").value); // 入力された数字を取得
+            let result = isPrime(number); // 素数判定
+            let resultText = result ? "これは素数です。" : "これは素数ではありません。"; // 結果のメッセージ
+            document.getElementById("result").innerText = resultText; // 結果を表示
+        }
+    </script>
+</head>
+<body>
+    <h1>素数判定</h1>
+    <p>素数かどうかを判定したい数字を入力してください：</p>
+    <input type="number" id="number" placeholder="数字を入力">
+    <button onclick="checkPrime()">判定する</button>
+    <p id="result"></p> <!-- 結果を表示する場所 -->
+</body>
+</html>
